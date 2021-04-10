@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "parse-torrent": "^9.1.3",
+    "torrent-search-api": "^2.1.3"
+  }
+}
