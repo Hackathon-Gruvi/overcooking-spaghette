@@ -19,12 +19,16 @@ const getTorrents = (async ()=>{
         })
         .then(async (torrent) => {
             const magnetLink = torrent.magnet;
+            const peers = torrent.peers;
+            const seeds = torrent.seeds;
             const torrentDetails = parseTorrent(magnetLink);
 
             var torrents = {
                 infohash: torrentDetails.infoHash,
                 name: torrentDetails.name,
-                trackers: torrentDetails.tr
+                trackers: torrentDetails.tr,
+                peers: peers,
+                seeds: seeds
             };
 
             // obj.table.push({id: 1, square:2});
