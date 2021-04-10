@@ -1,5 +1,6 @@
 const TorrentSearchApi = require('torrent-search-api');
-const parseTorrent = require('parse-torrent')
+const parseTorrent = require('parse-torrent');
+var fs = require('fs');
 
 // Get providers
 const providers = TorrentSearchApi.getProviders();
@@ -19,11 +20,22 @@ const getTorrents = (async ()=>{
         .then(async (torrent) => {
             const magnetLink = torrent.magnet;
             const torrentDetails = parseTorrent(magnetLink);
-            console.log(torrentDetails)
-            return torrentDetails.infoHash
-        })
-        .then((infohash)=>{
-            console.log(infohash)
+
+            var torrents = {
+                infohash: torrentDetails.infoHash,
+                name: torrentDetails.name,
+                trackers: torrentDetails.tr
+            };
+
+            // obj.table.push({id: 1, square:2});
+
+            var json = JSON.stringify(torrents);
+
+            fs.writeFile('torrents.json', json, 'utf8', function (err, data) {
+                fs.writeFile('writeMe.txt', data, function(err, result) {
+                   if(err) console.log('error', err);
+                });
+            });
         })
         .catch((error)=>{
             console.log(error)
