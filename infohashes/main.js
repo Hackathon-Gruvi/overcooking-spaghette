@@ -35,7 +35,7 @@ const getTorrents = (async (title) => {
                 const peers = torrent.peers;
                 const seeds = torrent.seeds;
                 const torrentDetails = parseTorrent(magnetLink);
-
+                
                 var torrentObj = {
                     infohash: torrentDetails.infoHash,
                     name: torrentDetails.name,

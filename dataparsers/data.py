@@ -2,7 +2,7 @@ import pandas as pd
 
 opus_data = pd.read_csv('movie_summary.csv')
 
-relevant_info = opus_data[['movie_odid', 'display_name', 'production_budget', 'international_box_office', 'worldwide_release_date']]
+relevant_info = opus_data[['movie_odid', 'display_name', 'genre', 'production_budget', 'international_box_office', 'worldwide_release_date']]
 
 print(relevant_info)
 
