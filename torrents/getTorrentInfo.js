@@ -18,7 +18,7 @@ const getParseTorrentInfo = ((magnetLink) => {
 })
 
 const getInfohashesForTop100 = (() => {
-    var top100 = JSON.parse(fs.readFileSync('topTPB.json'));
+    var top100 = JSON.parse(fs.readFileSync('top100.json'));
 
     for(let movie of top100){
         const magnetLink = movie.magnet
@@ -103,5 +103,5 @@ const getTorrentsByTitle = (async (title) => {
 })
 
 
-// getInfohashesForTop100();
+getInfohashesForTop100();
 getTorrentsForMoviesToTrack();

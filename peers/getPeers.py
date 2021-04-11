@@ -3,7 +3,6 @@ import binascii
 import json
 from time import sleep
 import ipinfo
-import csv
 import aiofiles
 import asyncio
 import time
