@@ -47,9 +47,13 @@ crossed_data_prod_seeds = crossed_data[crossed_data['production_budget'] != 0]
 crossed_data_prod_seeds.plot.scatter(x='production_budget', y='seeds')
 plt.savefig("prod_seeds.png")
 
+crossed_data_prod_seeds.plot.scatter(x='title', y='lost_revenue')
+print('Mean lost revenue')
+print(crossed_data_prod_seeds.lost_revenue.mean())
+plt.savefig("lost_revs.png")
+
 crossed_data.plot.scatter(x='genre', y='seeds')
 plt.savefig("genre_seeds.png")
-
 
 crossed_data_time = (crossed_data[['title', 'worldwide_release_date', 'time', 'time_to_hack']]).dropna()
 print('Mean time to hack')
