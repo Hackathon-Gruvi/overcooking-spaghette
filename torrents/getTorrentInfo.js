@@ -102,6 +102,7 @@ const getTorrentsByTitle = (async (title) => {
         })
 })
 
-
+console.log("Get torrents info for the top 100")
 getInfohashesForTop100();
+console.log("Get torrents info for movies to track")
 getTorrentsForMoviesToTrack();

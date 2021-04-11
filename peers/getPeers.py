@@ -38,7 +38,7 @@ async def get_peers_info(torrent):
     if not peers:
         return
 
-    async with aiofiles.open('data/PeersInformation.csv', mode="a") as afp:
+    async with aiofiles.open(path, mode="a") as afp:
         writer = AsyncWriter(afp, dialect="unix")
         
         print('Getting peer details!')
@@ -63,7 +63,7 @@ async def get_peers_info(torrent):
         await writer.writerows(peers_info)
 
 async def writeHeader(header):
-    async with aiofiles.open('data/PeersInformation.csv', mode="a") as afp:
+    async with aiofiles.open(path, mode="a") as afp:
         writer = AsyncWriter(afp, dialect="unix")
         await writer.writerow(header)
 
@@ -77,12 +77,14 @@ sleep(15) # wait for the DHT to build
 if not sys.argv[1]:
     print('Insert a filename')
 else:
+    path = 'data/PeersInformation_' + sys.argv[1][0 : (len(sys.argv[1])-6)] + '.csv'
+
     #gets first argument with the name of the file
     with open(sys.argv[1]) as json_file:
         data = json.load(json_file)
 
     #creating csv file and writing the header
-    data_filename = open('data/PeersInformation.csv', 'w')
+    data_filename = open(path, 'w')
 
     header = ['ip', 'hostname', 'city', 'region', 'country','name']
     asyncio.run(writeHeader(header))
