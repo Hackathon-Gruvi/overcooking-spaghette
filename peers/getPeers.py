@@ -9,6 +9,8 @@ import asyncio
 import time
 import numpy as np
 from aiocsv import AsyncReader, AsyncDictReader, AsyncWriter, AsyncDictWriter
+import sys
+
 
 async def get_peers_info(torrent):
     name = torrent['name']
@@ -73,15 +75,19 @@ dht = btdht.DHT()
 dht.start()
 sleep(15) # wait for the DHT to build
 
-with open('torrents/torrents.json') as json_file:
-    data = json.load(json_file)
+if not sys.argv[1]:
+    print('Insert a filename')
+else:
+    #gets first argument with the name of the file
+    with open(sys.argv[1]) as json_file:
+        data = json.load(json_file)
 
-#creating csv file and writing the header
-data_filename = open('data/PeersInformation.csv', 'w')
+    #creating csv file and writing the header
+    data_filename = open('data/PeersInformation.csv', 'w')
 
-header = ['ip', 'hostname', 'city', 'region', 'country','name']
-asyncio.run(writeHeader(header))
+    header = ['ip', 'hostname', 'city', 'region', 'country','name']
+    asyncio.run(writeHeader(header))
 
-#go through all torrents
-for torrent in data:
-    asyncio.run(get_peers_info(torrent))
+    #go through all torrents
+    for torrent in data:
+        asyncio.run(get_peers_info(torrent))
