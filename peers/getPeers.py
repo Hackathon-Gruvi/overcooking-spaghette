@@ -14,8 +14,7 @@ import sys
 async def get_peers_info(torrent):
     name = torrent['name']
     infohash = torrent['infohash']
-    number_of_peers = torrent['peers']
-
+    
     i = 3
     peers = []
 
