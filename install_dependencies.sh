@@ -7,3 +7,4 @@ pip3 install aiofiles
 pip3 install asyncio
 pip3 install numpy
 pip3 install aiocsv
+pip3 install matplotlib
