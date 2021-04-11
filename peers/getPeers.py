@@ -3,18 +3,18 @@ import binascii
 import json
 from time import sleep
 import ipinfo
-import csv
 import aiofiles
 import asyncio
 import time
 import numpy as np
 from aiocsv import AsyncReader, AsyncDictReader, AsyncWriter, AsyncDictWriter
+import sys
+
 
 async def get_peers_info(torrent):
     name = torrent['name']
     infohash = torrent['infohash']
-    number_of_peers = torrent['peers']
-
+    
     i = 3
     peers = []
 
@@ -37,7 +37,7 @@ async def get_peers_info(torrent):
     if not peers:
         return
 
-    async with aiofiles.open('data/PeersInformation.csv', mode="a") as afp:
+    async with aiofiles.open(path, mode="a") as afp:
         writer = AsyncWriter(afp, dialect="unix")
         
         print('Getting peer details!')
@@ -62,7 +62,7 @@ async def get_peers_info(torrent):
         await writer.writerows(peers_info)
 
 async def writeHeader(header):
-    async with aiofiles.open('data/PeersInformation.csv', mode="a") as afp:
+    async with aiofiles.open(path, mode="a") as afp:
         writer = AsyncWriter(afp, dialect="unix")
         await writer.writerow(header)
 
@@ -73,15 +73,21 @@ dht = btdht.DHT()
 dht.start()
 sleep(15) # wait for the DHT to build
 
-with open('torrents/torrents.json') as json_file:
-    data = json.load(json_file)
+if not sys.argv[1]:
+    print('Insert a filename')
+else:
+    path = 'data/PeersInformation_' + sys.argv[1][0 : (len(sys.argv[1])-6)] + '.csv'
 
-#creating csv file and writing the header
-data_filename = open('data/PeersInformation.csv', 'w')
+    #gets first argument with the name of the file
+    with open(sys.argv[1]) as json_file:
+        data = json.load(json_file)
 
-header = ['ip', 'hostname', 'city', 'region', 'country','name']
-asyncio.run(writeHeader(header))
+    #creating csv file and writing the header
+    data_filename = open(path, 'w')
 
-#go through all torrents
-for torrent in data:
-    asyncio.run(get_peers_info(torrent))
+    header = ['ip', 'hostname', 'city', 'region', 'country','name']
+    asyncio.run(writeHeader(header))
+
+    #go through all torrents
+    for torrent in data:
+        asyncio.run(get_peers_info(torrent))

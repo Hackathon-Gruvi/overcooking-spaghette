@@ -10,10 +10,10 @@ def getIMDBcode(url):
     return 'NA'
 
 
-with open('topTPB.json') as json_file:
+with open('top100wInfohash.json') as json_file:
     data = json.load(json_file)
     for movie in data:
         movie['imdb'] = getIMDBcode(movie['id'])
 
-datafile = open('modifiedTPB.json', 'w')
+datafile = open('top100complete.json', 'w')
 datafile.write(json.dumps(data))
