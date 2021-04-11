@@ -6,22 +6,22 @@ const TorrentSearchApi = require('torrent-search-api');
 const parseTorrent = require('parse-torrent');
 var fs = require('fs');
 
-app.get('/', cors(), (req, res) => {
-    const title = req.query.title;
-    console.log("Request received; Title = " + title);
-    getTorrents(title).then((torrentsArray) => {
-        res.send(torrentsArray);
-    })
-})
+// app.get('/', cors(), (req, res) => {
+//     const title = req.query.title;
+//     console.log("Request received; Title = " + title);
+//     getTorrentInfo(title).then((torrentsArray) => {
+//         res.send(torrentsArray);
+//     })
+// })
 
-app.listen(port, () => {
-    console.log(`Running at http://localhost:${port}`)
-})
+// app.listen(port, () => {
+//     console.log(`Running at http://localhost:${port}`)
+// })
 
 // Enable public providers
 TorrentSearchApi.enablePublicProviders();
 
-const getTorrents = (async (title) => {
+const getTorrentInfo = (async (title) => {
     return TorrentSearchApi.search(title, 'Movies', 20)
         .then((torrents) => {
             return torrents;
