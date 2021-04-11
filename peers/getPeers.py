@@ -73,7 +73,7 @@ dht = btdht.DHT()
 dht.start()
 sleep(15) # wait for the DHT to build
 
-with open('torrents.json') as json_file:
+with open('torrents/torrents.json') as json_file:
     data = json.load(json_file)
 
 #creating csv file and writing the header
