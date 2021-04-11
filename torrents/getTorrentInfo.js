@@ -21,7 +21,7 @@ var fs = require('fs');
 // Enable public providers
 TorrentSearchApi.enablePublicProviders();
 
-const getTorrentInfo = (async (title) => {
+const getTorrents = (async (title) => {
     return TorrentSearchApi.search(title, 'Movies', 20)
         .then((torrents) => {
             return torrents;
@@ -34,7 +34,7 @@ const getTorrentInfo = (async (title) => {
 
                 const peers = torrent.peers;
                 const seeds = torrent.seeds;
-                const torrentDetails = parseTorrent(magnetLink);
+                const torrentDetails = getTorrentInfo(magnetLink);
                 
                 var torrentObj = {
                     infohash: torrentDetails.infoHash,
@@ -61,4 +61,16 @@ const getTorrentInfo = (async (title) => {
         .catch((error) => {
             console.log(error)
         })
+})
+
+const getTorrentInfo = (async (magnetLink) => {
+    const torrentDetails = parseTorrent(magnetLink);
+        
+    var torrentInfo = {
+        infohash: torrentDetails.infoHash,
+        name: torrentDetails.name,
+        trackers: torrentDetails.tr
+    };
+
+    return torrentInfo
 })
