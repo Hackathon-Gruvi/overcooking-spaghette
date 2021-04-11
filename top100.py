@@ -5,7 +5,7 @@ movies_info = {}
 
 for movie in movies_list:
 	movies_info = movie.getinfo()
-	trimmed_info = [movie.title, movie.imdb_code, movie.torrents.peers, movie.torrents.seeders, movie.torrents.quality]
-	movies_info[movie] = trimmed_info
+	trimmed_info = [movie.imdb_code, movie.torrents.peers, movie.torrents.seeders, movie.torrents.quality]
+	movies_info[movie.title] = trimmed_info
 
 print(movies_info)
