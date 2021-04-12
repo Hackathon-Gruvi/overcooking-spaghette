@@ -55,7 +55,7 @@ We are aware that some of the peers might be using VPN and therefore the geoloca
 
 **Important:** we do not intend to store IP addresses, but rather their geolocation. 
 
-## Datascience module
+### Datascience module
 The information retrieved by the previous modules regards torrents and their peers' geolocation. This module cross-references all the information with a dataset.
 
 Finally, the information is presented and ready to use by the user.
