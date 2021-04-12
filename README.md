@@ -27,9 +27,10 @@ Piracy in the movie industry has been steadily increasing, and there are not man
 - seeders and peers
 - date of publish
 - trackers
-6. Build a dataset with aforementioned information.
-7. Extract legal information about the film, such as its budget, release dates, box office, etc.
-8. Cross reference with the information that was previously gathered and the OpusData dataset and try to answer the questions: 
+- IMDB code
+4. Build a dataset with aforementioned information.
+5. Extract legal information about the film, such as its budget, release dates, box office, etc.
+6. Cross reference with the information that was previously gathered and the OpusData dataset and try to answer the questions: 
 
     - What makes a movie more likely to be pirated? 
     - What is the impact of piracy in the movie industry?
