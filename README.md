@@ -1,5 +1,8 @@
 # Movie Coast Guard
 
+## Context
+
+
 ## Team
 | Name | GitHub | Linkedin |
 | ---- | ------ | -------- |
@@ -21,9 +24,9 @@ Piracy in the movie industry has been steadily increasing, and there are not man
 2. Gather relevant info from movie titles the user provided
 3. Build a dataset with aforementioned information
 4. Cross reference with the information that was previously gathered and the OpusData dataset and try to answer the questions: 
-    What makes a movie more likely to be pirated?
-    
-    What is the impact of piracy in the movie industry?
+
+    - What makes a movie more likely to be pirated? 
+    - What is the impact of piracy in the movie industry?
 
 
 ## Top 100
