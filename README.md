@@ -35,6 +35,8 @@ Piracy in the movie industry has been steadily increasing, and there are not man
     - What makes a movie more likely to be pirated? 
     - What is the impact of piracy in the movie industry?
 
+This aims to create a **snapshot** of the state of piracy in that moment.
+
 ## Architecture and information flow
 ![Architecture and information flow](https://user-images.githubusercontent.com/38894031/114429239-09c19700-9bb5-11eb-8a22-656c230a74c0.png)
 
